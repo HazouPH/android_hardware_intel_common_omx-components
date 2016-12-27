@@ -888,7 +888,7 @@ OMX_ERRORTYPE OMXVideoEncoderBase::SetTemporalLayer(OMX_PTR pStructure) {
     CHECK_TYPE_HEADER(p);
     CHECK_PORT_INDEX(p, OUTPORT_INDEX);
 
-    LOGE("SetTemporalLayer (enabled = %d)", p->nNumberOfTemporalLayer);
+    LOGE("SetTemporalLayer (enabled = %lu)", p->nNumberOfTemporalLayer);
 
     TemporalLayer.numberOfLayer = p->nNumberOfTemporalLayer;
     TemporalLayer.nPeriodicity = p->nPeriodicity;
