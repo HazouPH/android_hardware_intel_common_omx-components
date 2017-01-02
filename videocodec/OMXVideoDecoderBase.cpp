@@ -265,7 +265,7 @@ OMX_ERRORTYPE OMXVideoDecoderBase::ProcessorResume(void) {
 }
 
 OMX_ERRORTYPE OMXVideoDecoderBase::ProcessorFlush(OMX_U32 portIndex) {
-    LOGI("Flushing port# %lu.", portIndex);
+    LOGI("Flushing port# %u.", portIndex);
     if (mVideoDecoder == NULL) {
         LOGE("ProcessorFlush: Video decoder is not created.");
         return OMX_ErrorDynamicResourcesUnavailable;
@@ -425,7 +425,7 @@ OMX_ERRORTYPE OMXVideoDecoderBase::ProcessorProcess(
                 (*pBuffers[INPORT_INDEX])->nTimeStamp = nextFrame->timestamp;
                 (*pBuffers[INPORT_INDEX])->nFilledLen -= nextFrame->offSet;
                 retains[INPORT_INDEX] = BUFFER_RETAIN_GETAGAIN;
-                LOGW("Find multiple frames in a buffer, next frame offset = %lu, timestamp = %lld", (*pBuffers[INPORT_INDEX])->nOffset, (*pBuffers[INPORT_INDEX])->nTimeStamp);
+                LOGW("Find multiple frames in a buffer, next frame offset = %d, timestamp = %lld", (*pBuffers[INPORT_INDEX])->nOffset, (*pBuffers[INPORT_INDEX])->nTimeStamp);
             }
         }
         else if (status != DECODE_SUCCESS && status != DECODE_FRAME_DROPPED) {
