@@ -219,7 +219,7 @@ out:
         buffers[OUTPORT_INDEX]->nTimeStamp = outtimestamp;
         buffers[OUTPORT_INDEX]->nFlags = outflags;
 
-        LOGV("********** output buffer: len=%lu, ts=%lld, flags=%lx",
+        LOGV("********** output buffer: len=%d, ts=%lld, flags=%x",
              outfilledlen,
              outtimestamp,
              outflags);
