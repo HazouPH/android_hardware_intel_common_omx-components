@@ -480,6 +480,7 @@ LOCAL_SRC_FILES := \
     OMXComponentCodecBase.cpp \
     OMXVideoDecoderBase.cpp
 
+
 ifeq ($(TARGET_BOARD_PLATFORM),moorefield)
 LOCAL_SRC_FILES += \
     securevideo/moorefield/OMXVideoDecoderAVCSecure.cpp \
@@ -487,6 +488,16 @@ LOCAL_SRC_FILES += \
 LOCAL_CFLAGS += -DVED_TILING
 LOCAL_CFLAGS += -DUSE_META_DATA
 LOCAL_SHARED_LIBRARIES += libdl
+
+else ifeq ($(TARGET_BOARD_PLATFORM),clovertrail medfield sc1)
+# Secure AVC decoder for Clovertrail (uses IMR)
+LOCAL_SHARED_LIBRARIES += libsepdrm
+
+LOCAL_C_INCLUDES += $(TARGET_OUT_HEADERS)/libsepdrm
+
+LOCAL_SRC_FILES += securevideo/ctp/OMXVideoDecoderAVCSecure.cpp
+
+LOCAL_CFLAGS += -DVED_TILING
 endif
 
 LOCAL_CFLAGS += -Werror
