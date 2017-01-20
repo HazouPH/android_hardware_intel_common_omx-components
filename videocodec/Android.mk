@@ -489,7 +489,7 @@ LOCAL_CFLAGS += -DVED_TILING
 LOCAL_CFLAGS += -DUSE_META_DATA
 LOCAL_SHARED_LIBRARIES += libdl
 
-else ifeq ($(TARGET_BOARD_PLATFORM),clovertrail medfield sc1)
+else ifneq ($(filter $(TARGET_BOARD_PLATFORM),clovertrail medfield sc1),)
 # Secure AVC decoder for Clovertrail (uses IMR)
 LOCAL_SHARED_LIBRARIES += libsepdrm
 
