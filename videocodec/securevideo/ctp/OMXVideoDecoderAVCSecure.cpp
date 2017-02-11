@@ -273,7 +273,7 @@ OMX_ERRORTYPE OMXVideoDecoderAVCSecure::PrepareDecodeBuffer(OMX_BUFFERHEADERTYPE
     p->flag |= HAS_COMPLETE_FRAME;
 
     if (buffer->nOffset != 0) {
-        LOGW("buffer offset %d is not zero!!!", buffer->nOffset);
+        LOGW("buffer offset %lu is not zero!!!", buffer->nOffset);
     }
 
     IMRDataBuffer *imrBuffer = (IMRDataBuffer *)buffer->pBuffer;
@@ -289,7 +289,7 @@ OMX_ERRORTYPE OMXVideoDecoderAVCSecure::PrepareDecodeBuffer(OMX_BUFFERHEADERTYPE
             ret =  OMX_ErrorNotReady;
         } else if (res != 0) {
             mSessionPaused = false;
-            LOGE("Drm_WV_ReturnNALUHeaders failed. Error = %#x, IMR offset = %d, len = %d", res, imrBuffer->offset, buffer->nFilledLen);
+            LOGE("Drm_WV_ReturnNALUHeaders failed. Error = %#x, IMR offset = %d, len = %lu", res, imrBuffer->offset, buffer->nFilledLen);
             ret = OMX_ErrorHardware;
         } else {
             mSessionPaused = false;

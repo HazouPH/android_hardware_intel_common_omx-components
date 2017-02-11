@@ -276,7 +276,7 @@ OMX_ERRORTYPE OMXVideoDecoderAVC::SetParamIntelAVCDecodeSettings(OMX_PTR pStruct
         // TODO: check if we just return in this case.
         p->nMaxNumberOfReferenceFrame = NUM_REFERENCE_FRAME;
     }
-    LOGI("Maximum width = %u, height = %u, dpb = %u", p->nMaxWidth, p->nMaxHeight, p->nMaxNumberOfReferenceFrame);
+    LOGI("Maximum width = %lu, height = %lu, dpb = %lu", p->nMaxWidth, p->nMaxHeight, p->nMaxNumberOfReferenceFrame);
     mDecodeSettings = *p;
 
     return OMX_ErrorNone;

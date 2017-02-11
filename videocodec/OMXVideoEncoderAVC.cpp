@@ -329,7 +329,7 @@ OMX_ERRORTYPE OMXVideoEncoderAVC::ProcessorPreEmptyBuffer(OMX_BUFFERHEADERTYPE* 
 
     buffer->pPlatformPrivate = (OMX_PTR) EncodeInfo;
 
-    LOGV("ProcessorPreEmptyBuffer Frame %d, Type %s, EncodeInfo %x\n", mInputPictureCount, FrameTypeStr[EncodeFrameType], EncodeInfo);
+    LOGV("ProcessorPreEmptyBuffer Frame %lu, Type %s, EncodeInfo %lu\n", mInputPictureCount, FrameTypeStr[EncodeFrameType], EncodeInfo);
 
     mInputPictureCount ++;
     return OMX_ErrorNone;
@@ -348,7 +348,7 @@ OMX_BOOL OMXVideoEncoderAVC::ProcessCacheOperation(OMX_BUFFERHEADERTYPE **buffer
     eInfo.NotStopFrame		= encodeInfo & ENC_NSTOP;
     eInfo.FrameCount		 = GET_FC(encodeInfo);
 
-    LOGV("ProcessCacheOperation Frame %d, type:%s, CacheOps:%s, NoSTOP=%d, EOS=%d\n",
+    LOGV("ProcessCacheOperation Frame %d, type:%s, CacheOps:%s, NoSTOP=%d, EOS=%lu\n",
             eInfo.FrameCount, FrameTypeStr[eInfo.FrameType], CacheOperationStr[eInfo.CacheOperation],
             eInfo.NotStopFrame, buffers[INPORT_INDEX]->nFlags & OMX_BUFFERFLAG_EOS);
 
@@ -549,7 +549,7 @@ OMX_ERRORTYPE OMXVideoEncoderAVC::ProcessDataRetrieve(
             buffers[OUTPORT_INDEX]->nTimeStamp = 0;
             buffers[OUTPORT_INDEX]->nFlags = outflags;
             *outBufReturned = OMX_TRUE;
-            LOGV("emit one empty EOS OMX output buf = %p:%d, flag = 0x%08x, ts=%lld", buffers[OUTPORT_INDEX]->pBuffer, outfilledlen, outflags, outtimestamp);
+            LOGV("emit one empty EOS OMX output buf = %p:%lu, flag = 0x%08lu, ts=%lld", buffers[OUTPORT_INDEX]->pBuffer, outfilledlen, outflags, outtimestamp);
         } else
             //not emit out buf since something wrong
             *outBufReturned = OMX_FALSE;
@@ -562,11 +562,11 @@ OMX_ERRORTYPE OMXVideoEncoderAVC::ProcessDataRetrieve(
         if (outBuf.flag & ENCODE_BUFFERFLAG_NSTOPFRAME)
             buffers[OUTPORT_INDEX]->pPlatformPrivate = (OMX_PTR) 0x00000001;  //indicate it is nstop frame
         *outBufReturned = OMX_TRUE;
-        LOGV("emit one OMX output buf = %p:%d, flag = 0x%08x, ts=%lld", buffers[OUTPORT_INDEX]->pBuffer, outfilledlen, outflags, outtimestamp);
+        LOGV("emit one OMX output buf = %p:%lu, flag = 0x%08lu, ts=%lld", buffers[OUTPORT_INDEX]->pBuffer, outfilledlen, outflags, outtimestamp);
 
     }
 
-    LOGV("ProcessDataRetrieve OK, mFrameEncodedCount=%d , mFrameOutputCount=%d\n", mFrameEncodedCount, mFrameOutputCount);
+    LOGV("ProcessDataRetrieve OK, mFrameEncodedCount=%lu , mFrameOutputCount=%lu\n", mFrameEncodedCount, mFrameOutputCount);
     return OMX_ErrorNone;
 }
 
