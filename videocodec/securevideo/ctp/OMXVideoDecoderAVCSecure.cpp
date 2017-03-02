@@ -360,7 +360,7 @@ OMX_ERRORTYPE OMXVideoDecoderAVCSecure::GetParamVideoAVCProfileLevel(OMX_PTR pSt
     return OMX_ErrorNone;
 }
 
-OMX_ERRORTYPE OMXVideoDecoderAVCSecure::SetParamVideoAVCProfileLevel(OMX_PTR pStructure) {
+OMX_ERRORTYPE OMXVideoDecoderAVCSecure::SetParamVideoAVCProfileLevel(OMX_PTR) {
     LOGW("SetParamVideoAVCProfileLevel is not supported.");
     return OMX_ErrorUnsupportedSetting;
 }
@@ -385,6 +385,7 @@ void OMXVideoDecoderAVCSecure::MemFreeIMR(OMX_U8 *pBuffer, OMX_PTR pUserData) {
 
 OMX_U8* OMXVideoDecoderAVCSecure::MemAllocIMR(OMX_U32 nSizeBytes) {
     // Ignore passed nSizeBytes, use INPORT_BUFFER_SIZE instead
+    (void)nSizeBytes;
 
     for (int i = 0; i < INPORT_ACTUAL_BUFFER_COUNT; i++) {
         if (mIMRSlot[i].owner == NULL) {

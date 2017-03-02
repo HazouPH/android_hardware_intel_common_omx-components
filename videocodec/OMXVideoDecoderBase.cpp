@@ -1322,6 +1322,7 @@ OMX_ERRORTYPE OMXVideoDecoderBase::SetErrorReportMode(OMX_PTR pStructure) {
 
 OMX_COLOR_FORMATTYPE OMXVideoDecoderBase::GetOutputColorFormat(int width) {
 #ifndef VED_TILING
+    (void)width;
     return OMX_INTEL_COLOR_FormatYUV420PackedSemiPlanar;
 #else
     if (width > 1280 && width <= 2048) {
