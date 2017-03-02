@@ -497,7 +497,9 @@ LOCAL_C_INCLUDES += $(TARGET_OUT_HEADERS)/libsepdrm
 
 LOCAL_SRC_FILES += securevideo/ctp/OMXVideoDecoderAVCSecure.cpp
 
+ifeq ($(TARGET_BOARD_PLATFORM),clovertrail)
 LOCAL_CFLAGS += -DVED_TILING
+endif
 endif
 
 LOCAL_CFLAGS += -Werror
